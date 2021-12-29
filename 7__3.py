@@ -5,12 +5,20 @@ def edit_log(no, val):
 
 
 def interface():
-    no = int(input('Number of record to edit (int):\n>>> '))
-    val = float(input('Value to change the existing one (float):\n>>> '))
-    ans = edit_log(no, val)
-    if ans:
-        print(ans)
+    working = True
+    while working:
+        no = input('Number of record to edit (int):\n>>> ')
+        if no == 'exit':
+            working = False
+            break
+        val = input('Value to change the existing one (float):\n>>> ')
+        if val == 'exit':
+            working = False
+            break
+        no = int(no)
+        val = float(val)
+        edit_log(no, val)
 
 
-while True:
-    interface()
+
+interface()

@@ -1,5 +1,5 @@
 import os.path
-from sys import exit, path
+from sys import exit
 from json import dump
 
 
@@ -32,24 +32,27 @@ def merge_hobbies(infile1, infile2, outfile):
 
 
 def interface():
-    users = input('Usernames file name:\n>>> ')
-    if users == 'exit':
-        exit()
-    if not os.path.exists(users):
-        print(f'File {users} Doesn`t exists!')
-        return
-    hobbies = input('Hobbies file name:\n>>> ')
-    if hobbies == 'exit':
-        exit()
-    if not os.path.exists(hobbies):
-        print(f'File {hobbies} Doesn`t exists!')
-        return
-    outfile = input('Outfile file name:\n>>> ')
-    if outfile == 'exit':
-        exit()
-    merge_hobbies(users, hobbies, outfile)
-    print(f'Users and hobbies were merged in {outfile} file')
+    working = True
+    while working:
+        users = input('Usernames file name:\n>>> ')
+        if users == 'exit':
+            working = False
+            exit()
+        if not os.path.exists(users):
+            print(f'File {users} Doesn`t exists!')
+        hobbies = input('Hobbies file name:\n>>> ')
+        if hobbies == 'exit':
+            working = False
+            exit()
+        if not os.path.exists(hobbies):
+            print(f'File {hobbies} Doesn`t exists!')
+        outfile = input('Outfile file name:\n>>> ')
+        if outfile == 'exit':
+            working = False
+            exit()
+        merge_hobbies(users, hobbies, outfile)
+        print(f'Users and hobbies were merged in {outfile} file')
 
 
-while True:
-    interface()
+
+interface()

@@ -4,10 +4,15 @@ def add_value(value):
 
 
 def interface():
-    value = float(input('Value to add to bakery log:\n>>> '))
-    add_value(value)
-    print(f'Added value {value} to bakery log')
+    working = True
+    while working:
+        value = input('Value to add to bakery log:\n>>> ')
+        if value == 'exit':
+            working = False
+            break
+        add_value(float(value))
+        print(f'Added value {value} to bakery log')
 
 
-while True:
-    interface()
+
+interface()
